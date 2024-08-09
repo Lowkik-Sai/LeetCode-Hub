@@ -2,10 +2,10 @@
     /*
     Time complexity : O(N) - N is size of the given arr
     Space complexity : O(N) - For Visited arr of size N
+    Recursion Stack Space : O(N) 
     */
 
-
-    class Solution {
+class Solution {
 public:
     bool reach(vector<int>& arr, int start, vector<bool>& visited) {
         if (start < 0 || start >= arr.size() || visited[start]) return false; 
