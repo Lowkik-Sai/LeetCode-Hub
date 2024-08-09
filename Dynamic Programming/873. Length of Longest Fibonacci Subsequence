@@ -4,8 +4,8 @@
     Space complexity : O(N^2)
     */
 
-
-    class Solution {
+//Tabulation Method :
+class Solution {
 public:
     int lenLongestFibSubseq(vector<int>& arr) {
         int maxLength = 0;
@@ -25,6 +25,8 @@ public:
         return maxLength + 2; 
     }
 };
+
+//Memoized Method :
 // class Solution {
 // public:
 //     int fibSeq(vector<int>& arr, vector<vector<int>>& dp, int i, int prev, int& maxLength, map<int, int>& mapping){
