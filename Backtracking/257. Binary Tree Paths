@@ -2,11 +2,11 @@
     /*
     Time complexity : O(N) - N is number of nodes in given Binary Tree
     Space complexity : O(L) - L is total maxLength of the string in that path
-Recursion Stack Spacce : O(N) - N is number of nodes in given Binary Tree
+    Recursion Stack Space : O(N) - N is number of nodes in given Binary Tree
     */
 
 
-    /**
+ /**
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
@@ -17,6 +17,7 @@ Recursion Stack Spacce : O(N) - N is number of nodes in given Binary Tree
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     void getAllPaths(TreeNode* root, string& curr, vector<string>& paths){
