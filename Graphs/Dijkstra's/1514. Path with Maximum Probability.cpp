@@ -1,7 +1,7 @@
 
     /*
     Time complexity : O(V + ElogV)
-    Space complexity : Not Defined
+    Space complexity : O(V + E)
     */
 
 
