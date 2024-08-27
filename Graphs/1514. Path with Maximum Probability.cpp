@@ -1,8 +1,8 @@
 
-    """
+    /*
     Time complexity : O(V + ElogV)
     Space complexity : Not Defined
-    """
+    */
 
 
 class Solution {
@@ -39,9 +39,9 @@ public:
 };
 
 
-    """
+    /*
     Author : Lowkik-Sai
     Question Link : https://leetcode.com/problems/path-with-maximum-probability/
-    """
+    */
 
     
