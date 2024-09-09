@@ -1,53 +1,49 @@
 
     /*
-    Time complexity : O(n + k)
-    Space complexity : O(k)
+    Time complexity : O(n)
+    Space complexity : O(1)
     */
 
 
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
 public:
-    vector<ListNode*> splitListToParts(ListNode* head, int k) {
-        int n = 0;
-        ListNode* curr = head;
-        while(curr){
-            curr = curr->next;
-            n += 1;
+    long long findScore(vector<int>& nums, int i, vector<long long>& dp) {
+        int n = nums.size();
+        if (i == n - 1) return 0;
+        if (dp[i] != -1) return dp[i]; 
+        
+        long long maxScore = 0;
+        
+        for (int j = i + 1; j < n; ++j) {
+            long long jumpScore = (j - i) * nums[i]; 
+            maxScore = max(maxScore, jumpScore + findScore(nums, j, dp));
         }
-        vector<int> parts(k, n/k);
-        int mod = n % k;
-        for(int i = 0; i < mod; i++){
-            parts[i] += 1;
-        }
-        vector<ListNode*> answer(k, NULL);
-        curr = head;
-        for(int i = 0; i < k; i++){
-            answer[i] = curr;
-            while(parts[i] > 1 && curr){
-                curr = curr->next;
-                parts[i] -= 1;
+        
+        return dp[i] = maxScore; 
+    }
+
+    long long findMaximumScore(vector<int>& nums) {
+        int n = nums.size();
+        // vector<long long> dp(n, -1); 
+        // return findScore(nums, 0, dp);
+        long long score = 0;
+        long long lastScore = nums[0];
+        int currInd = 0;
+        for(int i = 1; i < n; i++){
+            if(nums[i] > lastScore){
+                score += (i-currInd) * lastScore;
+                lastScore = nums[i];
+                currInd = i;
             }
-            ListNode* temp = curr ? curr->next : NULL;
-            if(curr) curr->next = NULL;
-            curr = temp;
         }
-        return answer;
+        return score + (n-currInd-1) * lastScore;
     }
 };
 
+
     /*
     Author : Lowkik-Sai
-    Question Link : https://leetcode.com/problems/split-linked-list-in-parts/
+    Question Link : https://leetcode.com/problems/reach-end-of-array-with-max-score/description/
     */
 
     
